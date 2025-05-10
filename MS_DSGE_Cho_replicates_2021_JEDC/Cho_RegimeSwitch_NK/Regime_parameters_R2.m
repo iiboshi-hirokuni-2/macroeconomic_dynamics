@@ -1,0 +1,11 @@
+% Passive MP
+%psipi      = 0.689200996414256;
+psipi      = 0.00;
+psiy       = 0.00;
+%rhoR       = 0.660110217564081;
+rhoR       = 0.0;
+% Active FP
+deltab     = 0;
+%rhotau     = 0.649440285475237;
+rhotau     = 0.0;
+deltay0    = 0.0;
