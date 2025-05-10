@@ -48,7 +48,7 @@ end
     C1j_R1 = jacobian(System_of_Eq, Epsilon_t);
 
 
-        [A,B,C]=func_Model(par, B1j_R1,  A1j_R1,  B2j_R1,  C1j_R1);
+        [A,B,C]=func_SetParam(par, B1j_R1,  A1j_R1,  B2j_R1,  C1j_R1);
         [DET,FCC,OmegaK,GammaK]=X_SOLV_Q(PP, A,B,C);      
        % (1) Area for DET                            
                     if DET(1,1)<1 && DET(1,2)<=1,                         
@@ -103,7 +103,7 @@ end
             par_temp(x_i)=x; par_temp(y_i)=y;
 
 %             EvalModelQ;
-              [A,B,C]=func_Model(par_temp, B1j_R1,  A1j_R1,  B2j_R1,  C1j_R1);
+              [A,B,C]=func_SetParam(par_temp, B1j_R1,  A1j_R1,  B2j_R1,  C1j_R1);
 
             [DET,FCC,OmegaK,GammaK]=X_SOLV_Q(PP,A,B,C );
             
