@@ -4,11 +4,6 @@
 sig = 1;   % St Dev of shock
 [Ey,Ex] = unconditional_mean(gx, hx, gxx, hxx, gss, hss, eta, sig)
 
-% cal stochastic steady state by fixed point 
-x_d = zeros(1,1);  % x_d = zeros(4*2,1);
- x0_ss = csolve('eq_stochastic_steady_state',x_d ,[],1e-4,1000,hx, hxx, hss, sig )
-%   x0_ss2   = x0_ss(1:4,1)+x0_ss(5:8,1)
-[Error] = eq_stochastic_steady_state(x0_ss , hx, hxx, hss, sig )
 
 % Impulse Response Function
 sig = 100;          % St Dev of shock
@@ -16,7 +11,11 @@ x0= 0;        % initial values of predetermined variables
 h = 8;        % horizon of IRF
 e = [ 1; zeros(h,1)]; % generations of shocks
 
-[Y2,X2] = simu_2nd(gx, hx, gxx, hxx, gss, hss, eta, sig, x0_ss, e);
+% cal stochastic steady state by fixed point 
+x_d = zeros(1,1);  % x_d = zeros(4*2,1);
+ x0_ss = csolve('eq_stochastic_steady_state',x_d ,[],1e-4,1000,hx, hxx, hss, sig );
+
+ [Y2,X2] = simu_2nd(gx, hx, gxx, hxx, gss, hss, eta, sig, x0_ss, e);
 [Y1,X1] = simu_1st(gx, hx, eta, sig, x0_ss, e);
 t = 0:1:h+1;
 
